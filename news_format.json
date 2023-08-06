@@ -1,0 +1,25 @@
+[
+    {
+        "name" : ""
+        "url" : ""
+        "title_outerhtml" : ""
+        "title_selector" : ""
+        "title_jspath" : ""
+        "title_styles" : ""
+        "title_xpath" : ""
+        "title_fullxpath" : ""
+        "content_outerhtml" : ""
+        "content_selector" : ""
+        "content_jspath" : ""
+        "content_styles" : ""
+        "content_xpath" : ""
+        "content_fullxpath" : ""
+        "date_outerhtml" : ""
+        "date_selector" : ""
+        "date_jspath" : ""
+        "date_styles" : ""
+        "date_xpath" : ""
+        "date_fullxpath" : ""
+    },
+    
+]
