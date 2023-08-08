@@ -1,192 +1,436 @@
 [
     {
-        "name" : "노컷뉴스",
-        "url" : "www.nocutnews.co.kr",
-        "title" : "#pnlViewTop > div.h_info > h2",
-        "content" : "#pnlContent",
-        "date" : "#pnlViewTop > div.h_info > ul > li:nth-child(2)"
+        "name": "경향신문",
+        "url": "www.khan.co.kr",
+        "title": "#article_title",
+        "content": "#articleBody",
+        "date": "#container > div.art_header.borderless > div.function_wrap > div.art_info > div > em"
     },
     {
-        "name" : "더팩트",
-        "url" : "news.tf.co.kr",
-        "title" : "#title_area",
-        "content" : "#content_area",
-        "date" : "#posLeft > div.timeTxt"
+        "name": "국민일보",
+        "url": "news.kmib.co.kr",
+        "title": "#sub > div.sub_header > div > div.nwsti > h3",
+        "content": "#articleBody",
+        "date": "#sub > div.sub_header > div > div.nwsti > div > div.date > span"
     },
     {
-        "name" : "데일리안",
-        "url" : "www.dailian.co.kr",
-        "title" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > h1",
-        "content" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.article > description",
-        "date" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.information > div.divtext2"
+        "name": "동아일보",
+        "url": "www.donga.com",
+        "title": "#container > div.article_title > h1",
+        "content": "#article_txt",
+        "date": "#container > div.article_title > div.title_foot > span:nth-child(1)"
     },
     {
-        "name" : "머니S",
-        "url" : "www.moneys.co.kr",
-        "title" : "#article > h1",
-        "content" : "#textBody > div",
-        "date" : "#article > div.info3 > ul > li > span.num"
+        "name": "문화일보",
+        "url": "www.munhwa.com",
+        "title": "#container > div > div.view_inner > div.view_header > h2",
+        "content": "#News_content",
+        "date": "#container > div > div.view_inner > div.split_aside_wrap > div.split_item.left > div > div > div.view_info > dl.date > dd:nth-child(3)"
     },
     {
-        "name" : "미디어오늘",
-        "url" : "www.mediatoday.co.kr",
-        "title" : "#article-view > div > header > h3",
-        "content" : "#article-view-content-div",
-        "date" : "#article-view > div > header > div.info-group > article:nth-child(1) > ul > li:nth-child(2)"
+        "name": "서울신문",
+        "url": "www.seoul.co.kr",
+        "title": "#viewWrapDiv > div.S20_title > div.S20_article_tit > h1",
+        "content": "#atic_txt1",
+        "date": "#viewWrapDiv > div.S20_title > div.S20_article_tit > div > div.option > span.w_date > span"
     },
     {
-        "name" : "아이뉴스24",
-        "url" : "www.inews24.com",
-        "title" : "body > header.view > h1",
-        "content" : "#articleBody",
-        "date" : "body > header.view > nav > span > time"
+        "name": "세계일보",
+        "url": "www.segye.com",
+        "title": "#title_sns",
+        "content": "#article_txt > article",
+        "date": "#contTitle > p.viewInfo"
     },
     {
-        "name" : "오마이뉴스",
-        "url" : "www.ohmynews.com",
-        "title" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > h3 > a",
-        "content" : "#content_wrap > div.content > div.newswrap > div.news_body > div.news_view > div.article_view > div",
-        "date" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > div > div:nth-child(1)"
+        "name": "조선일보",
+        "url": "www.chosun.com",
+        "title": "#fusion-app > div.article.\\| > div:nth-child(2) > div > div > div.article-header__headline-container.\\|.box--pad-left-md.box--pad-right-md > h1",
+        "content": "#fusion-app > div.article.\\| > div:nth-child(2) > div > section > article > section",
+        "date": "#fusion-app > div.article.\\| > div:nth-child(2) > div > section > article > div.article-dateline.\\|.flex.flex--justify-space-between.flex--align-items-top.box--border.box--border-grey-40.box--border-horizontal.box--border-horizontal-bottom.box--pad-bottom-sm > span > span.inputDate"
     },
     {
-        "name" : "프레시안",
-        "url" : "www.pressian.com",
-        "title" : "#container > div > div.article_view > div.view_header > p.title",
-        "content" : "#articleBody",
-        "date" : "#container > div > div.article_view > div.view_header > div > div.byline > span.date"
+        "name": "중앙일보",
+        "url": "www.joongang.co.kr",
+        "title": "#container > section > article > header > h1",
+        "content": "#article_body",
+        "date": "#container > section > article > header > div.datetime > div.time_bx > p:nth-child(1)"
     },
     {
-        "name" : "디지털데일리",
-        "url" : "www.ddaily.co.kr",
-        "title" : "#container > div > div.article_head > p",
-        "content" : "#container > div > div.section > div.article_view > div.article_content",
-        "date" : "#container > div > div.article_head > div > div.byline > span.date"
+        "name": "한겨레",
+        "url": "www.hani.co.kr",
+        "title": "#article_view_headline > h4 > span",
+        "content": "#a-left-scroll-in > div.article-text > div > div.text",
+        "date": "#article_view_headline > p.date-time"
     },
     {
-        "name" : "디지털타임스",
-        "url" : "www.dt.co.kr",
-        "title" : "#v-left-scroll-in > div.article_head > h1",
-        "content" : "#v-left-scroll-in > div.article_con > div > div.article_view",
-        "date" : "#v-left-scroll-in > div.article_head > div.article_info > span:nth-child(1)"
+        "name": "한국일보",
+        "url": "www.hankookilbo.com",
+        "title": "body > div.wrap.imp-end > div.container.end-uni > div.end-top > div > div > h2",
+        "content": "body > div.wrap.imp-end > div.container.end-uni > div.end-body > div > div.col-main",
+        "date": "body > div.wrap.imp-end > div.container.end-uni > div.end-top > div > div > div.info > dl"
     },
     {
-        "name" : "블로터",
-        "url" : "www.bloter.net",
-        "title" : "#article-view > div > header > h1",
-        "content" : "#snsAnchor > div",
-        "date" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+        "name": "뉴스1",
+        "url": "www.news1.kr",
+        "title": "#article_body_content > div.title",
+        "content": "#articles_detail",
+        "date": "#article_body_content > div.title > div.info"
     },
     {
-        "name" : "전자신문",
-        "url" : "www.etnews.com",
-        "title" : "body > section > section > article > div.article_title > h2",
-        "content" : "#articleBody > p:nth-child(1)",
-        "date" : "body > section > section > article > div.article_header > div > time"
+        "name": "뉴시스",
+        "url": "newsis.com",
+        "title": "#content > div.articleView > div.view > div.top > h1",
+        "content": "#content > div.articleView > div.view > div.viewer > article",
+        "date": "#content > div.articleView > div.view > div.infoLine > div.left > p"
     },
     {
-        "name" : "ZDNET Korea",
-        "url" : "zdnet.co.kr",
-        "title" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > h1",
-        "content" : "#articleBody",
-        "date" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > p.meta > span"
+        "name": "연합뉴스",
+        "url": "www.yna.co.kr",
+        "title": "#articleWrap > div.content03 > header > h1",
+        "content": "#articleWrap > div.content01.scroll-article-zone01 > div > div > article",
+        "date": "#newsUpdateTime01"
     },
     {
-        "name" : "더스쿠프",
-        "url" : "www.thescoop.co.kr",
-        "title" : "#article-view > div > header > h3",
-        "content" : "#article-view-content-div",
-        "date" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+        "name": "연합뉴스TV",
+        "url": "www.yonhapnewstv.co.kr",
+        "title": "#content > div.inner > div.article-head-wrap > div > div > strong",
+        "content": "#articleBody",
+        "date": "#content > div.inner > div.article-head-wrap > div > div > ul"
     },
     {
-        "name" : "레이디경향",
-        "url" : "lady.khan.co.kr",
-        "title" : "#articleHeader > div > div > div.subject_box > div > div.title-bottom > h1",
-        "content" : "#articleBody",
-        "date" : "#topBarStandard > div.byline > em"
+        "name": "채널A",
+        "url": "www.ichannela.com",
+        "title": "#wrapper > section.news_page > div > div.news_article_title > strong",
+        "content": "#wrapper > section.news_page > div > div.article_cont > article > div.news_page_txt",
+        "date": "#wrapper > section.news_page > div > div.news_article_title > div > div.public > span.date"
     },
     {
-        "name" : "매일경제",
-        "url" : "www.mk.co.kr",
-        "title" : "#container > section > div.news_detail_head_group.type_none_bg > section > div > div > div > h2",
-        "content" : "#container > section > div.news_detail_body_group > section > div.min_inner > div.sec_body > div.news_cnt_detail_wrap",
-        "date" : "#container > section > div.news_detail_body_group > section > div.min_inner > header > div > div.news_write_info_group > div > div > dl > dd"
+        "name": "한국경제TV",
+        "url": "www.wowtv.co.kr",
+        "title": "#whole-wrap > div.wrap > div.contain-content > div.news-header-section > div.title-area > h1",
+        "content": "#divNewsContent",
+        "date": "#artdate"
     },
     {
-        "name" : "시사IN",
-        "url" : "www.sisain.co.kr",
-        "title" : "#articleViewCon > article > header > div > h3",
-        "content" : "#article-view-content-div",
-        "date" : "#articleViewCon > article > header > div > div > ul > li:nth-child(1)"
+        "name": "JTBC",
+        "url": "news.jtbc.co.kr",
+        "title": "#jtbcBody",
+        "content": "#ijam_content",
+        "date": "#articletitle > div > span > span.i_date"
     },
     {
-        "name" : "시사저널",
-        "url" : "www.sisajournal.com",
-        "title" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > div > div",
-        "content" : "#article-view-content-div",
-        "date" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > section > div > ul > li:nth-child(2)"
+        "name": "KBS",
+        "url": "news.kbs.co.kr",
+        "title": "#content > div > div.detail-component.det-news > div.landing-box > div.landing-caption > h5",
+        "content": "#cont_newstext",
+        "date": "#content > div > div.detail-component.det-news > div.landing-box > div.landing-caption > span > em:nth-child(1)"
     },
     {
-        "name" : "신동아",
-        "url" : "shindonga.donga.com",
-        "title" : "#view_top > div.title > h2",
-        "content" : "#article_text",
-        "date" : "#view_top > div.info > dl > dd"
+        "name": "MBC",
+        "url": "imnews.imbc.com",
+        "title": "#content > div > section.wrap_article > article > div.wrap_title > h2",
+        "content": "#content > div > section.wrap_article > article > div.news_cont > div.news_txt",
+        "date": "#content > div > section.wrap_article > article > div.wrap_title > div.ui_article > div.date > span:nth-child(1)"
     },
     {
-        "name" : "월간 산",
-        "url" : "san.chosun.com",
-        "title" : "#article-view > header > div > h3",
-        "content" : "#article-view-content-div",
-        "date" : "#article-view > header > div > div.info-box > ul > li"
+        "name": "MBN",
+        "url": "www.mbn.co.kr",
+        "title": "#content_2020_top > div > div.box01 > h1",
+        "content": "#newsViewArea",
+        "date": "#content_2020_top > div > div.box02 > div.txt_box > span > span"
     },
     {
-        "name" : "이코노미스트",
-        "url" : "economist.co.kr",
-        "title" : "#article_body > h1",
-        "content" : "#article_body > div.content",
-        "date" : "#present_issue_day"
+        "name": "SBS",
+        "url": "news.sbs.co.kr",
+        "title": "#news-title",
+        "content": "#container > div.w_inner > div.w_article > div.w_article_cont > div.w_article_left > div.article_cont_area > div.main_text > div",
+        "date": "#container > div.w_inner > div.w_article > div.w_article_title > div > div.info_area > div.date_area > span:nth-child(2)"
     },
     {
-        "name" : "주간경향",
-        "url" : "weekly.khan.co.kr",
-        "title" : "#sub_content > div.article_title_wrap > div.title.edt190509",
-        "content" : "#NewsAdContent",
-        "date" : "#sub_content > div.article_title_wrap > div.top > div.article_date"
+        "name": "SBS Biz",
+        "url": "biz.sbs.co.kr",
+        "title": "#cnbc-front-articleHeader-self > div > div > h3",
+        "content": "#cnbc-front-articleContent-area-font",
+        "date": "#cnbc-front-articleHeader-self > div > div > div.ah_info > span.ahi_date"
     },
     {
-        "name" : "주간동아",
-        "url" : "weekly.donga.com",
-        "title" : "#view_top > div.title > h2",
-        "content" : "#text",
-        "date" : "#view_top > div.info > dl > dd"
+        "name": "TV조선",
+        "url": "news.tvchosun.com",
+        "title": "#wrap > div > div.article_header > div.article_tit > h3",
+        "content": "#wrap > div > div.contents > div.article_detail_body > div",
+        "date": "#wrap > div > div.article_header > div.article_tit > p"
     },
     {
-        "name" : "주간조선",
-        "url" : "weekly.chosun.com",
-        "title" : "#article-view > div > header > h3",
-        "content" : "#article-view-content-div",
-        "date" : "#article-view > div > header > div.head-inner > ul > li:nth-child(2)"
+        "name": "YTN",
+        "url": "www.ytn.co.kr",
+        "title": "#nav_content > div:nth-child(1) > h3",
+        "content": "#CmAdContent > span",
+        "date": "#nav_content > div.wrap > div.li_1 > span.time"
     },
     {
-        "name" : "중앙SUNDAY",
-        "url" : "www.joongang.co.kr",
-        "title" : "#container > section > article > header > h1",
-        "content" : "#article_body",
-        "date" : "#container > section > article > header > div.datetime > div > p > time"
+        "name": "매일경제",
+        "url": "www.mk.co.kr",
+        "title": "#container > section > div.news_detail_head_group.type_none_bg > section > div > div > div > h2",
+        "content": "#container > section > div.news_detail_body_group > section > div.min_inner > div.sec_body > div.news_cnt_detail_wrap",
+        "date": "#container > section > div.news_detail_body_group > section > div.min_inner > header > div > div.news_write_info_group > div > div > dl > dd"
     },
     {
-        "name" : "한겨레21",
-        "url" : "h21.hani.co.kr",
-        "title" : "#container > section.view-box > div.view-title > div > h2",
-        "content" : "#contents > div > div:nth-child(1)",
-        "date" : "#container > section.view-box > div.view-title > div > div.arti-date.toggle > span.register"
+        "name": "머니투데이",
+        "url": "news.mt.co.kr",
+        "title": "#container > div.view_top > h1",
+        "content": "#textBody",
+        "date": "#view_wrapc01-scroll-in > div.vc_top > div > ul > li"
     },
     {
-        "name" : "한경비즈니스",
-        "url" : "magazine.hankyung.com",
-        "title" : "#contents > article > div.article-head > h1",
-        "content" : "#magazineView",
-        "date" : "#contents > article > div.article-head > div > div.date-info > span.date-published > span"
+        "name": "비즈워치",
+        "url": "news.bizwatch.co.kr",
+        "title": "#wrap > div.content.cfixed > div.top_content > div > h1",
+        "content": "#wrap > div.content.cfixed > div.left_content > section > article > div",
+        "date": "#wrap > div.content.cfixed > div.top_content > div > ul.info > li.update"
+    },
+    {
+        "name": "서울경제",
+        "url": "www.sedaily.com",
+        "title": "#v-left-scroll-in > div.article_head > h1",
+        "content": "#v-left-scroll-in > div.article_con > div.con_left > div.article_view",
+        "date": "#v-left-scroll-in > div.article_head > div.article_info > span:nth-child(1)"
+    },
+    {
+        "name": "아시아경제",
+        "url": "view.asiae.co.kr",
+        "title": "#container > div.contents > section > div.cont_sub.cont02023 > div.area_title > h1",
+        "content": "#txt_area",
+        "date": "#container > div.contents > section > div.cont_sub.cont02023 > div.area_title > div > div.article_info > div.area_date > div.date_box > p"
+    },
+    {
+        "name": "이데일리",
+        "url": "n.news.naver.com",
+        "title": "#title_area > span",
+        "content": "#dic_area",
+        "date": "#ct > div.media_end_head.go_trans > div.media_end_head_info.nv_notrans > div.media_end_head_info_datestamp > div > span"
+    },
+    {
+        "name": "조선비즈",
+        "url": "biz.chosun.com",
+        "title": "#fusion-app > div.article > div:nth-child(2) > div > div > div.article-header__headline-container.\\|.box--pad-left-md.box--pad-right-md > h1 > span",
+        "content": "#fusion-app > div.article > div:nth-child(2) > div > section > article > section",
+        "date": "#fusion-app > div.article > div:nth-child(2) > div > section > article > div.article-dateline.\\|.flex--wrap.flex.flex--justify-space-between.flex--align-items-center.box--border.box--border-grey-40.box--border-horizontal.box--border-horizontal-bottom.box--pad-bottom-sm > span"
+    },
+    {
+        "name": "조세일보",
+        "url": "www.joseilbo.com",
+        "title": "#allwrap > div.list_cont_wrap > div.view_article_wrap > div > div > div.view_title_wrap > div.view_title_box > h1",
+        "content": "#jose_news_view > div",
+        "date": "#allwrap > div.list_cont_wrap > div.view_article_wrap > div > div > div.news_reg_time > ul > li:nth-child(1)"
+    },
+    {
+        "name": "파이낸셜뉴스",
+        "url": "www.fnnews.com",
+        "title": "#root > div.view_hd > div > h1",
+        "content": "#article_content",
+        "date": "#root > div.view_hd > div > div.byline > em:nth-child(2)"
+    },
+    {
+        "name": "한국경제",
+        "url": "www.hankyung.com",
+        "title": "#container > div > div > article > h1",
+        "content": "#articletxt",
+        "date": "#container > div > div > article > div > div > div.article-timestamp > div.datetime > span:nth-child(1) > span"
+    },
+    {
+        "name": "헤럴드경제",
+        "url": "news.heraldcorp.com",
+        "title": "body > div.wrap > div.view_bg > div.view_area > div.article_wrap > div.article_top > ul > li.article_title.ellipsis2",
+        "content": "#articleText",
+        "date": "body > div.wrap > div.view_bg > div.view_area > div.article_wrap > div.article_top > ul > li.article_date"
+    },
+    {
+        "name": "노컷뉴스",
+        "url": "www.nocutnews.co.kr",
+        "title": "#pnlViewTop > div.h_info > h2",
+        "content": "#pnlContent",
+        "date": "#pnlViewTop > div.h_info > ul > li:nth-child(2)"
+    },
+    {
+        "name": "더팩트",
+        "url": "news.tf.co.kr",
+        "title": "#title_area",
+        "content": "#content_area",
+        "date": "#posLeft > div.timeTxt"
+    },
+    {
+        "name": "데일리안",
+        "url": "www.dailian.co.kr",
+        "title": "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > h1",
+        "content": "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.article > description",
+        "date": "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.information > div.divtext2"
+    },
+    {
+        "name": "머니S",
+        "url": "www.moneys.co.kr",
+        "title": "#article > h1",
+        "content": "#textBody > div",
+        "date": "#article > div.info3 > ul > li > span.num"
+    },
+    {
+        "name": "미디어오늘",
+        "url": "www.mediatoday.co.kr",
+        "title": "#article-view > div > header > h3",
+        "content": "#article-view-content-div",
+        "date": "#article-view > div > header > div.info-group > article:nth-child(1) > ul > li:nth-child(2)"
+    },
+    {
+        "name": "아이뉴스24",
+        "url": "www.inews24.com",
+        "title": "body > header.view > h1",
+        "content": "#articleBody",
+        "date": "body > header.view > nav > span > time"
+    },
+    {
+        "name": "오마이뉴스",
+        "url": "www.ohmynews.com",
+        "title": "#content_wrap > div.content > div.newstitlwrap > div.newstitle > h3 > a",
+        "content": "#content_wrap > div.content > div.newswrap > div.news_body > div.news_view > div.article_view > div",
+        "date": "#content_wrap > div.content > div.newstitlwrap > div.newstitle > div > div:nth-child(1)"
+    },
+    {
+        "name": "프레시안",
+        "url": "www.pressian.com",
+        "title": "#container > div > div.article_view > div.view_header > p.title",
+        "content": "#articleBody",
+        "date": "#container > div > div.article_view > div.view_header > div > div.byline > span.date"
+    },
+    {
+        "name": "디지털데일리",
+        "url": "www.ddaily.co.kr",
+        "title": "#container > div > div.article_head > p",
+        "content": "#container > div > div.section > div.article_view > div.article_content",
+        "date": "#container > div > div.article_head > div > div.byline > span.date"
+    },
+    {
+        "name": "디지털타임스",
+        "url": "www.dt.co.kr",
+        "title": "#v-left-scroll-in > div.article_head > h1",
+        "content": "#v-left-scroll-in > div.article_con > div > div.article_view",
+        "date": "#v-left-scroll-in > div.article_head > div.article_info > span:nth-child(1)"
+    },
+    {
+        "name": "블로터",
+        "url": "www.bloter.net",
+        "title": "#article-view > div > header > h1",
+        "content": "#snsAnchor > div",
+        "date": "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+    },
+    {
+        "name": "전자신문",
+        "url": "www.etnews.com",
+        "title": "body > section > section > article > div.article_title > h2",
+        "content": "#articleBody > p:nth-child(1)",
+        "date": "body > section > section > article > div.article_header > div > time"
+    },
+    {
+        "name": "ZDNET Korea",
+        "url": "zdnet.co.kr",
+        "title": "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > h1",
+        "content": "#articleBody",
+        "date": "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > p.meta > span"
+    },
+    {
+        "name": "더스쿠프",
+        "url": "www.thescoop.co.kr",
+        "title": "#article-view > div > header > h3",
+        "content": "#article-view-content-div",
+        "date": "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+    },
+    {
+        "name": "레이디경향",
+        "url": "lady.khan.co.kr",
+        "title": "#articleHeader > div > div > div.subject_box > div > div.title-bottom > h1",
+        "content": "#articleBody",
+        "date": "#topBarStandard > div.byline > em"
+    },
+    {
+        "name": "매일경제",
+        "url": "www.mk.co.kr",
+        "title": "#container > section > div.news_detail_head_group.type_none_bg > section > div > div > div > h2",
+        "content": "#container > section > div.news_detail_body_group > section > div.min_inner > div.sec_body > div.news_cnt_detail_wrap",
+        "date": "#container > section > div.news_detail_body_group > section > div.min_inner > header > div > div.news_write_info_group > div > div > dl > dd"
+    },
+    {
+        "name": "시사IN",
+        "url": "www.sisain.co.kr",
+        "title": "#articleViewCon > article > header > div > h3",
+        "content": "#article-view-content-div",
+        "date": "#articleViewCon > article > header > div > div > ul > li:nth-child(1)"
+    },
+    {
+        "name": "시사저널",
+        "url": "www.sisajournal.com",
+        "title": "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > div > div",
+        "content": "#article-view-content-div",
+        "date": "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > section > div > ul > li:nth-child(2)"
+    },
+    {
+        "name": "신동아",
+        "url": "shindonga.donga.com",
+        "title": "#view_top > div.title > h2",
+        "content": "#article_text",
+        "date": "#view_top > div.info > dl > dd"
+    },
+    {
+        "name": "월간 산",
+        "url": "san.chosun.com",
+        "title": "#article-view > header > div > h3",
+        "content": "#article-view-content-div",
+        "date": "#article-view > header > div > div.info-box > ul > li"
+    },
+    {
+        "name": "이코노미스트",
+        "url": "economist.co.kr",
+        "title": "#article_body > h1",
+        "content": "#article_body > div.content",
+        "date": "#present_issue_day"
+    },
+    {
+        "name": "주간경향",
+        "url": "weekly.khan.co.kr",
+        "title": "#sub_content > div.article_title_wrap > div.title.edt190509",
+        "content": "#NewsAdContent",
+        "date": "#sub_content > div.article_title_wrap > div.top > div.article_date"
+    },
+    {
+        "name": "주간동아",
+        "url": "weekly.donga.com",
+        "title": "#view_top > div.title > h2",
+        "content": "#text",
+        "date": "#view_top > div.info > dl > dd"
+    },
+    {
+        "name": "주간조선",
+        "url": "weekly.chosun.com",
+        "title": "#article-view > div > header > h3",
+        "content": "#article-view-content-div",
+        "date": "#article-view > div > header > div.head-inner > ul > li:nth-child(2)"
+    },
+    {
+        "name": "중앙SUNDAY",
+        "url": "www.joongang.co.kr",
+        "title": "#container > section > article > header > h1",
+        "content": "#article_body",
+        "date": "#container > section > article > header > div.datetime > div > p > time"
+    },
+    {
+        "name": "한겨레21",
+        "url": "h21.hani.co.kr",
+        "title": "#container > section.view-box > div.view-title > div > h2",
+        "content": "#contents > div > div:nth-child(1)",
+        "date": "#container > section.view-box > div.view-title > div > div.arti-date.toggle > span.register"
+    },
+    {
+        "name": "한경비즈니스",
+        "url": "magazine.hankyung.com",
+        "title": "#contents > article > div.article-head > h1",
+        "content": "#magazineView",
+        "date": "#contents > article > div.article-head > div > div.date-info > span.date-published > span"
     }
-    
 ]
