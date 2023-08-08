@@ -2,191 +2,191 @@
     {
         "name" : "노컷뉴스",
         "url" : "www.nocutnews.co.kr",
-        "title_selector" : "#pnlViewTop > div.h_info > h2",
-        "content_selector" : "#pnlContent",
-        "date_selector" : "#pnlViewTop > div.h_info > ul > li:nth-child(2)"
+        "title" : "#pnlViewTop > div.h_info > h2",
+        "content" : "#pnlContent",
+        "date" : "#pnlViewTop > div.h_info > ul > li:nth-child(2)"
     },
     {
         "name" : "더팩트",
         "url" : "news.tf.co.kr",
-        "title_selector" : "#title_area",
-        "content_selector" : "#content_area",
-        "date_selector" : "#posLeft > div.timeTxt"
+        "title" : "#title_area",
+        "content" : "#content_area",
+        "date" : "#posLeft > div.timeTxt"
     },
     {
         "name" : "데일리안",
         "url" : "www.dailian.co.kr",
-        "title_selector" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > h1",
-        "content_selector" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.article > description",
-        "date_selector" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.information > div.divtext2"
+        "title" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > h1",
+        "content" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.article > description",
+        "date" : "#contentsArea > div:nth-child(1) > div:nth-child(5) > div.news-contents > div.information > div.divtext2"
     },
     {
         "name" : "머니S",
         "url" : "www.moneys.co.kr",
-        "title_selector" : "#article > h1",
-        "content_selector" : "#textBody > div",
-        "date_selector" : "#article > div.info3 > ul > li > span.num"
+        "title" : "#article > h1",
+        "content" : "#textBody > div",
+        "date" : "#article > div.info3 > ul > li > span.num"
     },
     {
         "name" : "미디어오늘",
         "url" : "www.mediatoday.co.kr",
-        "title_selector" : "#article-view > div > header > h3",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#article-view > div > header > div.info-group > article:nth-child(1) > ul > li:nth-child(2)"
+        "title" : "#article-view > div > header > h3",
+        "content" : "#article-view-content-div",
+        "date" : "#article-view > div > header > div.info-group > article:nth-child(1) > ul > li:nth-child(2)"
     },
     {
         "name" : "아이뉴스24",
         "url" : "www.inews24.com",
-        "title_selector" : "body > header.view > h1",
-        "content_selector" : "#articleBody",
-        "date_selector" : "body > header.view > nav > span > time"
+        "title" : "body > header.view > h1",
+        "content" : "#articleBody",
+        "date" : "body > header.view > nav > span > time"
     },
     {
         "name" : "오마이뉴스",
         "url" : "www.ohmynews.com",
-        "title_selector" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > h3 > a",
-        "content_selector" : "#content_wrap > div.content > div.newswrap > div.news_body > div.news_view > div.article_view > div",
-        "date_selector" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > div > div:nth-child(1)"
+        "title" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > h3 > a",
+        "content" : "#content_wrap > div.content > div.newswrap > div.news_body > div.news_view > div.article_view > div",
+        "date" : "#content_wrap > div.content > div.newstitlwrap > div.newstitle > div > div:nth-child(1)"
     },
     {
         "name" : "프레시안",
         "url" : "www.pressian.com",
-        "title_selector" : "#container > div > div.article_view > div.view_header > p.title",
-        "content_selector" : "#articleBody",
-        "date_selector" : "#container > div > div.article_view > div.view_header > div > div.byline > span.date"
+        "title" : "#container > div > div.article_view > div.view_header > p.title",
+        "content" : "#articleBody",
+        "date" : "#container > div > div.article_view > div.view_header > div > div.byline > span.date"
     },
     {
         "name" : "디지털데일리",
         "url" : "www.ddaily.co.kr",
-        "title_selector" : "#container > div > div.article_head > p",
-        "content_selector" : "#container > div > div.section > div.article_view > div.article_content",
-        "date_selector" : "#container > div > div.article_head > div > div.byline > span.date"
+        "title" : "#container > div > div.article_head > p",
+        "content" : "#container > div > div.section > div.article_view > div.article_content",
+        "date" : "#container > div > div.article_head > div > div.byline > span.date"
     },
     {
         "name" : "디지털타임스",
         "url" : "www.dt.co.kr",
-        "title_selector" : "#v-left-scroll-in > div.article_head > h1",
-        "content_selector" : "#v-left-scroll-in > div.article_con > div > div.article_view",
-        "date_selector" : "#v-left-scroll-in > div.article_head > div.article_info > span:nth-child(1)"
+        "title" : "#v-left-scroll-in > div.article_head > h1",
+        "content" : "#v-left-scroll-in > div.article_con > div > div.article_view",
+        "date" : "#v-left-scroll-in > div.article_head > div.article_info > span:nth-child(1)"
     },
     {
         "name" : "블로터",
         "url" : "www.bloter.net",
-        "title_selector" : "#article-view > div > header > h1",
-        "content_selector" : "#snsAnchor > div",
-        "date_selector" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+        "title" : "#article-view > div > header > h1",
+        "content" : "#snsAnchor > div",
+        "date" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
     },
     {
         "name" : "전자신문",
         "url" : "www.etnews.com",
-        "title_selector" : "body > section > section > article > div.article_title > h2",
-        "content_selector" : "#articleBody > p:nth-child(1)",
-        "date_selector" : "body > section > section > article > div.article_header > div > time"
+        "title" : "body > section > section > article > div.article_title > h2",
+        "content" : "#articleBody > p:nth-child(1)",
+        "date" : "body > section > section > article > div.article_header > div > time"
     },
     {
         "name" : "ZDNET Korea",
         "url" : "zdnet.co.kr",
-        "title_selector" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > h1",
-        "content_selector" : "#articleBody",
-        "date_selector" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > p.meta > span"
+        "title" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > h1",
+        "content" : "#articleBody",
+        "date" : "body > div.contentWrapper > div.container > div.left_cont > div > div > div.news_head > p.meta > span"
     },
     {
         "name" : "더스쿠프",
         "url" : "www.thescoop.co.kr",
-        "title_selector" : "#article-view > div > header > h3",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
+        "title" : "#article-view > div > header > h3",
+        "content" : "#article-view-content-div",
+        "date" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2)"
     },
     {
         "name" : "레이디경향",
         "url" : "lady.khan.co.kr",
-        "title_selector" : "#articleHeader > div > div > div.subject_box > div > div.title-bottom > h1",
-        "content_selector" : "#articleBody",
-        "date_selector" : "#topBarStandard > div.byline > em"
+        "title" : "#articleHeader > div > div > div.subject_box > div > div.title-bottom > h1",
+        "content" : "#articleBody",
+        "date" : "#topBarStandard > div.byline > em"
     },
     {
         "name" : "매일경제",
         "url" : "www.mk.co.kr",
-        "title_selector" : "#container > section > div.news_detail_head_group.type_none_bg > section > div > div > div > h2",
-        "content_selector" : "#container > section > div.news_detail_body_group > section > div.min_inner > div.sec_body > div.news_cnt_detail_wrap",
-        "date_selector" : "#container > section > div.news_detail_body_group > section > div.min_inner > header > div > div.news_write_info_group > div > div > dl > dd"
+        "title" : "#container > section > div.news_detail_head_group.type_none_bg > section > div > div > div > h2",
+        "content" : "#container > section > div.news_detail_body_group > section > div.min_inner > div.sec_body > div.news_cnt_detail_wrap",
+        "date" : "#container > section > div.news_detail_body_group > section > div.min_inner > header > div > div.news_write_info_group > div > div > dl > dd"
     },
     {
         "name" : "시사IN",
         "url" : "www.sisain.co.kr",
-        "title_selector" : "#articleViewCon > article > header > div > h3",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#articleViewCon > article > header > div > div > ul > li:nth-child(1)"
+        "title" : "#articleViewCon > article > header > div > h3",
+        "content" : "#article-view-content-div",
+        "date" : "#articleViewCon > article > header > div > div > ul > li:nth-child(1)"
     },
     {
         "name" : "시사저널",
         "url" : "www.sisajournal.com",
-        "title_selector" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > div > div",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > section > div > ul > li:nth-child(2)"
+        "title" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > div > div",
+        "content" : "#article-view-content-div",
+        "date" : "#user-container > div.float-center.max-width-1200 > header > div > div.header-inner.noimage > section > div > ul > li:nth-child(2)"
     },
     {
         "name" : "신동아",
         "url" : "shindonga.donga.com",
-        "title_selector" : "#view_top > div.title > h2",
-        "content_selector" : "#article_text",
-        "date_selector" : "#view_top > div.info > dl > dd"
+        "title" : "#view_top > div.title > h2",
+        "content" : "#article_text",
+        "date" : "#view_top > div.info > dl > dd"
     },
     {
         "name" : "월간 산",
         "url" : "san.chosun.com",
-        "title_selector" : "#article-view > header > div > h3",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#article-view > header > div > div.info-box > ul > li"
+        "title" : "#article-view > header > div > h3",
+        "content" : "#article-view-content-div",
+        "date" : "#article-view > header > div > div.info-box > ul > li"
     },
     {
         "name" : "이코노미스트",
         "url" : "economist.co.kr",
-        "title_selector" : "#article_body > h1",
-        "content_selector" : "#article_body > div.content",
-        "date_selector" : "#present_issue_day"
+        "title" : "#article_body > h1",
+        "content" : "#article_body > div.content",
+        "date" : "#present_issue_day"
     },
     {
         "name" : "주간경향",
         "url" : "weekly.khan.co.kr",
-        "title_selector" : "#sub_content > div.article_title_wrap > div.title.edt190509",
-        "content_selector" : "#NewsAdContent",
-        "date_selector" : "#sub_content > div.article_title_wrap > div.top > div.article_date"
+        "title" : "#sub_content > div.article_title_wrap > div.title.edt190509",
+        "content" : "#NewsAdContent",
+        "date" : "#sub_content > div.article_title_wrap > div.top > div.article_date"
     },
     {
         "name" : "주간동아",
         "url" : "weekly.donga.com",
-        "title_selector" : "#view_top > div.title > h2",
-        "content_selector" : "#text",
-        "date_selector" : "#view_top > div.info > dl > dd"
+        "title" : "#view_top > div.title > h2",
+        "content" : "#text",
+        "date" : "#view_top > div.info > dl > dd"
     },
     {
         "name" : "주간조선",
         "url" : "weekly.chosun.com",
-        "title_selector" : "#article-view > div > header > h3",
-        "content_selector" : "#article-view-content-div",
-        "date_selector" : "#article-view > div > header > div.head-inner > ul > li:nth-child(2)"
+        "title" : "#article-view > div > header > h3",
+        "content" : "#article-view-content-div",
+        "date" : "#article-view > div > header > div.head-inner > ul > li:nth-child(2)"
     },
     {
         "name" : "중앙SUNDAY",
         "url" : "www.joongang.co.kr",
-        "title_selector" : "#container > section > article > header > h1",
-        "content_selector" : "#article_body",
-        "date_selector" : "#container > section > article > header > div.datetime > div > p > time"
+        "title" : "#container > section > article > header > h1",
+        "content" : "#article_body",
+        "date" : "#container > section > article > header > div.datetime > div > p > time"
     },
     {
         "name" : "한겨레21",
         "url" : "h21.hani.co.kr",
-        "title_selector" : "#container > section.view-box > div.view-title > div > h2",
-        "content_selector" : "#contents > div > div:nth-child(1)",
-        "date_selector" : "#container > section.view-box > div.view-title > div > div.arti-date.toggle > span.register"
+        "title" : "#container > section.view-box > div.view-title > div > h2",
+        "content" : "#contents > div > div:nth-child(1)",
+        "date" : "#container > section.view-box > div.view-title > div > div.arti-date.toggle > span.register"
     },
     {
         "name" : "한경비즈니스",
         "url" : "magazine.hankyung.com",
-        "title_selector" : "#contents > article > div.article-head > h1",
-        "content_selector" : "#magazineView",
-        "date_selector" : "#contents > article > div.article-head > div > div.date-info > span.date-published > span"
+        "title" : "#contents > article > div.article-head > h1",
+        "content" : "#magazineView",
+        "date" : "#contents > article > div.article-head > div > div.date-info > span.date-published > span"
     }
     
 ]
