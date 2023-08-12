@@ -432,5 +432,138 @@
         "title": "#contents > article > div.article-head > h1",
         "content": "#magazineView",
         "date": "#contents > article > div.article-head > div > div.date-info > span.date-published > span"
+    },
+    {
+        "name" : "기자협회보",
+        "url" : "www.journalist.or.kr",
+        "title_selector" : "#article_view > div.article_head > p.title",
+        "content_selector" : "#news_body_area",
+        "date_selector" : "#article_view > div.article_head > div > div.byline"
+    },
+    {
+        "name" : "농민신문",
+        "url" : "www.nongmin.com",
+        "title_selector" : "#contents > div > div.view_cont > div:nth-child(1) > div.view_tit > pre",
+        "content_selector" : "#contents > div > div.view_cont > div.inr_cont > div.left_cont > div.news_content_box > input.siteViewContent",
+        "date_selector" : "#contents > div > div.view_cont > div:nth-child(1) > div.view_data > div.inr > pre:nth-child(1)"
+    },
+    {
+        "name" : "뉴스타파",
+        "url" : "newstapa.org",
+        "title_selector" : "body > section.section.archives-section > div > div:nth-child(1) > h3",
+        "content_selector" : "#editor_fontsize",
+        "date_selector" : "body > section.section.archives-section > div > div.section-header.archives-header.d-flex.flex-wrap.align-items-center.justify-content-between > div.author-container > div > div.flex-grow-1 > p"
+    },
+    {
+        "name" : "동아사이언스",
+        "url" : "www.dongascience.com",
+        "title_selector" : "#article_title > h2",
+        "content_selector" : "#article_body",
+        "date_selector" : "#article_title > div > div.info > span"
+    },
+    {
+        "name" : "여성신문",
+        "url" : "www.womennews.co.kr",
+        "title_selector" : "#user-container > div > div.float-center.max-width-1080 > header > div > div",
+        "content_selector" : "#user-container > div > div.float-center.max-width-1080 > header > section > div > ul > li:nth-child(2) > i",
+        "date_selector" : "#article-view-content-div"
+    },
+    {
+        "name" : "일다",
+        "url" : "www.ildaro.com",
+        "title_selector" : "#wrap > div.article_head > h1",
+        "content_selector" : "#textinput",
+        "date_selector" : "#wrap > div.article_head > div.read_option_top > div.writer_time"
+    },
+    {
+        "name" : "헬스조선",
+        "url" : "health.chosun.com",
+        "title_selector" : "#news_title_text_id",
+        "content_selector" : "#news_body_id > div.par > div:nth-child(2)",
+        "date_selector" : "#date_text"
+    },
+    {
+        "name" : "강원도민일보",
+        "url" : "www.kado.net",
+        "title_selector" : "#article-view > div > header > h3",
+        "content_selector" : "#article-view-content-div",
+        "date_selector" : "#article-view > div > header > div > article:nth-child(1) > ul > li:nth-child(2) > i"
+    },
+    {
+        "name" : "강원일보",
+        "url" : "www.kwnews.co.kr",
+        "title_selector" : "#container > div > div.section > div > div.article_head > h2",
+        "content_selector" : "#articlebody",
+        "date_selector" : "#container > div > div.section > div > div.article_head > div > div.byline > span.date"
+    },
+    {
+        "name" : "경기일보",
+        "url" : "www.kyeonggi.com",
+        "title_selector" : "#article_wrap > div.article_view > div.article_tit_wrap > h1",
+        "content_selector" : "#article_wrap > div.article_view > div.article_cont_wrap",
+        "date_selector" : "#article_wrap > div.article_view > div.article_tit_wrap > div.article_date > span:nth-child(2)"
+    },
+    {
+        "name" : "국제신문",
+        "url" : "www.kookje.co.kr",
+        "title_selector" : "#news_topArea > div.news_title > h1",
+        "content_selector" : "#news_textArea > div.news_article",
+        "date_selector" : "#news_topArea > div.news_reporterDate.left > ul > li:nth-child(2) > span"
+    },
+    {
+        "name" : "대구MBC",
+        "url" : "dgmbc.com",
+        "title_selector" : "#contents > div.site-content.single-entry > div.container > div.row > div.col-md-8 > div.single-content > header > h1",
+        "content_selector" : "#journal_article_wrap",
+        "date_selector" : "#contents > div.site-content.single-entry > div.container > div.row > div.col-md-8 > div.single-content > div.simple_news_notice.mt-1.mb-1 > div > div > div:nth-child(1) > time"
+    },
+    {
+        "name" : "대전일보",
+        "url" : "www.daejonilbo.com",
+        "title_selector" : "#articleViewCon > article > header > h3",
+        "content_selector" : "#article-view-content-div",
+        "date_selector" : "#articleViewCon > article > header > div.infomation-group > div.infomation-wrap > ul > li:nth-child(2)"
+    },
+    {
+        "name" : "매일신문",
+        "url" : "news.imaeil.com",
+        "title_selector" : "#container > div.inner > div.article_head > p",
+        "content_selector" : "#articlebody",
+        "date_selector" : "#container > div.inner > div.article_head > div > div.byline > span.date"
+    },
+    {
+        "name" : "부산일보",
+        "url" : "www.busan.com",
+        "title_selector" : "#container > div:nth-child(2) > div.section > div.article_view > div.article_head > p",
+        "content_selector" : "#container > div:nth-child(2) > div.section > div.article_view > div.article_content",
+        "date_selector" : "#container > div:nth-child(2) > div.section > div.article_view > div.article_head > div.byline"
+    },
+    {
+        "name" : "전주MBC",
+        "url" : "www.jmbc.co.kr",
+        "title_selector" : "body > div.wrapper.main_wrap > section.p-t-30.p-b-0 > div:nth-child(2) > div.view_news_wrap.b1 > div.subject_wrap > span",
+        "content_selector" : "body > div.wrapper.main_wrap > section.p-t-30.p-b-0 > div:nth-child(2) > div.view_news_wrap.b1 > div.contents_wrap.news",
+        "date_selector" : "body > div.wrapper.main_wrap > section.p-t-30.p-b-0 > div:nth-child(2) > div.view_news_wrap.b1 > div.info_wrap > div > span.broad_date"
+    },
+    {
+        "name" : "CJB청주방송",
+        "url" : "www.cjb.co.kr",
+        "title_selector" : "#scontainer > div > div.cont-body > div > div.board-view > div.top > h1",
+        "content_selector" : "#scontainer > div > div.cont-body > div > div.board-view > div.view-content",
+        "date_selector" : "#scontainer > div > div.cont-body > div > div.board-view > div.top > dl"
+    },
+    {
+        "name" : "JIBS",
+        "url" : "www.jibs.co.kr",
+        "title_selector" : "#print-div-title",
+        "content_selector" : "#print-div-content > div",
+        "date_selector" : "#print-div-tool > div.pull-left.m-t-md > div.pull-left.articles-detail-attach-left.b-r"
+    },
+    {
+        "name" : "kbc광주방송",
+        "url" : "www.ikbc.co.kr",
+        "title_selector" : "#title_wrap > h1",
+        "content_selector" : "#body_wrap > div.content",
+        "date_selector" : "#title_wrap > div.date"
     }
 ]
