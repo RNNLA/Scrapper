@@ -9,8 +9,7 @@ class link_getter :
         self.data_src = pd.read_excel(excel_name, sheet_name="1. 반도체 공급망 RISK 키워드 POOL")
         self.base_url = base_url
 
-        # self.data_col_list = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
-        self.data_col_list = ['반도체 공통용어']
+        self.data_col_list = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
 
     # flag = 0 : Use all keywords from excel files. You can designate columns, if you don't want all columns.
     # flag = 1 : Use your own data set. Use it if you want one or two words instead of whole things.
@@ -32,7 +31,7 @@ class link_getter :
                 soup = BeautifulSoup(html.text, 'html.parser')
                 print(url) #print log. Erase it if you don't want any log
             
-                for elem in soup.select('#main_pack > section > div > div.group_news > ul > li > div > div > a'):
+                for elem in soup.select('#main_pack > section > div > div.group_news > ul > li > div > div > div.news_info > div.info_group > a.info'):
                     if(len(elem['class']) > 1) :
                         continue
                     total_cnt += 1
@@ -43,18 +42,16 @@ class link_getter :
 
             print(f"{key} ended") #print log. Erase it if you don't want any log
             
-
         self._to_json(file_name = file_name, json_file = _json)
+
 
     def _get_data_by_col(self, columns = []):
         if len(columns) == 0 :
             columns = self.data_col_list
-
         data = []
 
         for col in columns:
             data += self.data_src[col].dropna(axis = 0).tolist()
-
         return data
     
 
@@ -71,5 +68,5 @@ class link_getter :
             
             
 
-lg = link_getter()
-lg.get_link_by_naver('naver_test.json')
+# lg = link_getter()
+# lg.get_link_by_naver('naver_test.json', repeat = 5)
