@@ -14,7 +14,7 @@ class link_getter :
 
     # flag = 0 : Use all keywords from excel files. You can designate columns, if you don't want all columns.
     # flag = 1 : Use your own data set. Use it if you want one or two words instead of whole things.
-    def get_link_by_naver(self, data = [], flag = 0, columns = []):
+    def get_link_by_naver(self, file_name, flag = 0, data = [], columns = [], repeat = 5):
         _json = []
         total_cnt = 0
         
@@ -26,7 +26,7 @@ class link_getter :
         for key in data:
             print(f"{key} started") #print log. Erase it if you don't want any log
 
-            for page_num in range(10):
+            for page_num in range(repeat):
                 url = self.base_url + key + self._add_param(page_num, '&sort=1')
                 html = requests.get(url)
                 soup = BeautifulSoup(html.text, 'html.parser')
@@ -39,11 +39,12 @@ class link_getter :
                     link = elem['href']
                     dictionary = {f'{total_cnt}' : link}
                     _json.append(dictionary)
+                time.sleep(0.5)
 
             print(f"{key} ended") #print log. Erase it if you don't want any log
-            time.sleep(0.5)
+            
 
-        self._to_json(file_name = 'naver_test.json', json_file = _json)
+        self._to_json(file_name = file_name, json_file = _json)
 
     def _get_data_by_col(self, columns = []):
         if len(columns) == 0 :
@@ -71,4 +72,4 @@ class link_getter :
             
 
 lg = link_getter()
-lg.get_link_by_naver()
+lg.get_link_by_naver('naver_test.json')
