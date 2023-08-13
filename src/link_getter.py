@@ -1,28 +1,33 @@
 from bs4 import BeautifulSoup
 import requests
 import pandas as pd
-import time
 import json
+import time
+from typing import List
+from typing import Tuple
 
 class link_getter :
+    full_columns : List[str] = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
+    
     def __init__(self, excel_name = "risk_dictionary.xlsx", base_url = "https://search.naver.com/search.naver?where=news&query="):
         self.data_src = pd.read_excel(excel_name, sheet_name="1. 반도체 공급망 RISK 키워드 POOL")
         self.base_url = base_url
 
-        self.data_col_list = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
-
-    # flag = 0 : Use all keywords from excel files. You can designate columns, if you don't want all columns.
-    # flag = 1 : Use your own data set. Use it if you want one or two words instead of whole things.
-    def get_link_by_naver(self, file_name, flag = 0, data = [], columns = [], repeat = 5):
+    # flag = False : Use all keywords from excel files. You can designate columns, if you don't want all columns.
+    # flag = True : Use your own data set. Use it if you want one or two words instead of whole things.
+    def get_link_by_naver(self, file_name : str, flag : bool, data : List[str] = [], columns : List[str] = [], repeat  : int = 5):
         _json = []
         total_cnt = 0
-        
-        data = {
-            0 : self._get_data_by_col(columns),
-            1 : data
-        }.get(flag)
+        try:            
+            _data = self._get_data_by_col(columns) if flag == False else data
+            if (flag == True) and (len(data) == 0):
+                raise Exception('You must enter the data, not the empty list')
 
-        for key in data:
+        except Exception as ex:
+            print(ex)
+            return None
+        
+        for key in _data:
             print(f"{key} started") #print log. Erase it if you don't want any log
 
             for page_num in range(repeat):
@@ -47,7 +52,8 @@ class link_getter :
 
     def _get_data_by_col(self, columns = []):
         if len(columns) == 0 :
-            columns = self.data_col_list
+            raise Exception('You don\'t enter any columns.')
+
         data = []
 
         for col in columns:
@@ -56,17 +62,20 @@ class link_getter :
     
 
     def _add_param(self, page_num, *args) :
-        _ = ''
+        params = ''
         for idx, arg in enumerate(args):
-            _ += arg
-        return "&start=" + str(page_num * 10 + 1) + _
+            params += arg
+        return "&start=" + str(page_num * 10 + 1) + params
     
 
     def _to_json(self, file_name, json_file) :
         with open(file_name, 'w') as f:
             json.dump(json_file, f, ensure_ascii=False, indent=4)
-            
-            
+    
 
-# lg = link_getter()
-# lg.get_link_by_naver('naver_test.json', repeat = 5)
+
+lg = link_getter()
+lg.get_link_by_naver('naver_text.json', True)
+lg.get_link_by_naver('naver_text.json', False)
+
+
