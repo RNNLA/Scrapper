@@ -12,8 +12,8 @@ from typing import List
 class link_getter :
     # all columns from the excel file. Use it if you want full columns or default value.
     full_columns = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
-    # selectors per site. Choose one where you want to get links.
-    selectors = {
+    # selectors per site to get links. Choose one where you want to get links.
+    link_selector = {
         'naver' : '#main_pack > section > div > div.group_news > ul > li > div > div > div.news_info > div.info_group > a.info',
     }
 
@@ -40,7 +40,7 @@ class link_getter :
             print(f"{key} started") #print log. Erase it if you don't want any log
 
             for page_num in range(repeat):
-                url = self.base_url + key + self._add_param(page_num, '&sort=1')
+                url = self.base_url + key + self._add_param(page_num, '&sort=1', '&pd=5')
 
                 try :
                     html = requests.get(url)
@@ -58,7 +58,7 @@ class link_getter :
                 
                 print(url) #print log. Erase it if you don't want any log
             
-                for elem in soup.select(link_getter.selectors.get('naver')):
+                for elem in soup.select(link_getter.link_selector.get('naver')):
                     if(len(elem['class']) > 1) :
                         continue
 
