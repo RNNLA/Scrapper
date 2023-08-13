@@ -97,10 +97,5 @@ class link_getter :
             json.dump(json_file, f, ensure_ascii=False, indent=4)
 
 
-    
-
-
-lg = link_getter()
-lg.get_link_by_naver('naver_text.json', flag = False, columns = link_getter.full_columns, repeat = 1)
 
 
