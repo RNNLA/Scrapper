@@ -17,7 +17,7 @@ class WebCrawling:
             'Accept-Language': 'en-US, en;q=0.5'})
         self._data = list()
 
-    def run(self):
+    def run(self) -> List | None:
         try:
             if len(self._tags) != 3:
                 raise Exception('The number of tags must be 3')
@@ -27,14 +27,14 @@ class WebCrawling:
             print(e)
             return None
 
-    def _runEach(self):
+    def _runEach(self) -> None:
         data = list()
         for url in self._urls:
             cleaned_data = self._cleanData(self._getData(url))
             data.append(cleaned_data)
         self._data = data
 
-    def _getData(self, url: str):
+    def _getData(self, url: str) -> List | None:
         data = list()
         try:
             response = requests.get(url, headers=self._header)
@@ -55,21 +55,21 @@ class WebCrawling:
             print('Error occured while getting data\n{0}'.format(e))
             return None
 
-    def _extractData(self, soup: BeautifulSoup, tag: str):
+    def _extractData(self, soup: BeautifulSoup, tag: str) -> str:
         return soup.select(tag)[0].text
 
-    def _extractContent(self, soup: BeautifulSoup, tag: str):
+    def _extractContent(self, soup: BeautifulSoup, tag: str) -> List[str]:
         content = list()
         data = soup.select(tag)
         for text in data:
             content.append(text.text)
         return content
     
-    def _cleanData(self, data: List[str]):
+    def _cleanData(self, data: List) -> List:
         title, contents, date = data
         for regex in self.regex_formats:
             title = re.sub(regex, '', title)
-            date = re.sub(regex, '', title)
+            date = re.sub(regex, '', date)
         for i, _content in enumerate(contents):
             for regex in self.regex_formats:
                 _content = re.sub(regex, '', _content)
