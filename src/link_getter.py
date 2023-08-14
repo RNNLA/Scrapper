@@ -2,12 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 import json
-
+import datetime as dt
 import time
 from typing import List
-
-
-
+from typing import Optional
 
 class link_getter :
     # all columns from the excel file. Use it if you want full columns or default value.
@@ -21,10 +19,12 @@ class link_getter :
         self.data_src = pd.read_excel(excel_name, sheet_name="1. 반도체 공급망 RISK 키워드 POOL")
         self.base_url = base_url
 
-
     # flag = False : Use all keywords from excel files. You can designate columns, if you don't want all columns.
     # flag = True : Use your own data set. Use it if you want one or two words instead of whole things.
-    def get_link_by_naver(self, file_name : str, flag : bool, data : List[str] = [], columns : List[str] = [], repeat  : int = 5):
+    def get_link_by_naver(self, file_name : str, flag : bool, data : List[str] = [], 
+                          repeat  : int = 1, 
+                          start_date : Optional[dt.date] = dt.date.today(),
+                          end_date : Optional[dt.date] = None):
         _json = []
         total_cnt = 0
         try:            
@@ -35,46 +35,54 @@ class link_getter :
             if (flag == True) and (len(data) == 0):
                 raise Exception('You must enter the data, not the empty list')
             
-
         except Exception as ex:
             print(ex)
             return None
         
         for key in _data:
             print(f"{key} started") #print log. Erase it if you don't want any log
-
-            #for page_num in range(repeat):
-            url = self.base_url + key + self._add_param(1200, '&sort=1', '&pd=5')
-
-            try :
-                html = requests.get(url)
-            except Exception as ex:
-                print('error from the request side')
-                print(ex)
-                return None
             
-            try :
-                soup = BeautifulSoup(html.text, 'html.parser')
-            except Exception as ex:
-                print('error from the bs side')
-                print(ex)
-                return None
+            cur_date = start_date
+            end_year = cur_date.year
+            end_month = cur_date.month-1
+            end_day = cur_date.day
+            end_date = dt.date(end_year, end_month, end_day)
+            print(end_date)
             
-            print(url) #print log. Erase it if you don't want any log
-        
-            for elem in soup.select(link_getter.link_selector.get('naver')):
-                if(len(elem['class']) > 1) :
-                    continue
+            while(cur_date != end_date) :
+                prev_date = cur_date - dt.timedelta(days = 1)
+                for page_num in range(repeat):
+                    url = self.base_url + key + self._add_param(page_num, '&sort=1', '&pd=3', f'&ds={cur_date.strftime("%Y.%m.%d")}', f'&de={cur_date.strftime("%Y.%m.%d")}')
 
-                total_cnt += 1
-                link = elem['href']
-                dictionary = {f'{total_cnt}' : link}
-                _json.append(dictionary)
+                    try :
+                        html = requests.get(url)
+                    except Exception as ex:
+                        print('error from the request side')
+                        print(ex)
+                        return None
+                    
+                    try :
+                        soup = BeautifulSoup(html.text, 'html.parser')
+                    except Exception as ex:
+                        print('error from the bs side')
+                        print(ex)
+                        return None
+                    
+                    print(url) #print log. Erase it if you don't want any log
+                
+                    for elem in soup.select(link_getter.link_selector.get('naver')):
+                        if(len(elem['class']) > 1) :
+                            continue
 
-            time.sleep(0.5)
+                        total_cnt += 1
+                        link = elem['href']
+                        dictionary = {f'{total_cnt}' : link}
+                        _json.append(dictionary)
 
+                    time.sleep(0.5)
+                cur_date -= dt.timedelta(days = 1)
             print(f"{key} ended") #print log. Erase it if you don't want any log
-            
+                
         self._to_json(file_name = file_name, json_file = _json)
 
 
@@ -102,5 +110,6 @@ class link_getter :
 
 
 
+
 lg = link_getter()
-lg.get_link_by_naver('naver.json', True, data = ['반도체'], repeat = 1)
+lg.get_link_by_naver('naver.json', True, data = ['반도체'], repeat = 10)
