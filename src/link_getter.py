@@ -28,9 +28,13 @@ class link_getter :
         _json = []
         total_cnt = 0
         try:            
+            if(repeat > 400) :
+                raise Exception('Too much repeat. Repeat is limited up to 400.')
+
             _data = self._get_data_by_col(columns) if flag == False else data
             if (flag == True) and (len(data) == 0):
                 raise Exception('You must enter the data, not the empty list')
+            
 
         except Exception as ex:
             print(ex)
@@ -39,35 +43,35 @@ class link_getter :
         for key in _data:
             print(f"{key} started") #print log. Erase it if you don't want any log
 
-            for page_num in range(repeat):
-                url = self.base_url + key + self._add_param(page_num, '&sort=1', '&pd=5')
+            #for page_num in range(repeat):
+            url = self.base_url + key + self._add_param(1200, '&sort=1', '&pd=5')
 
-                try :
-                    html = requests.get(url)
-                except Exception as ex:
-                    print('error from the request side')
-                    print(ex)
-                    return None
-                
-                try :
-                    soup = BeautifulSoup(html.text, 'html.parser')
-                except Exception as ex:
-                    print('error from the bs side')
-                    print(ex)
-                    return None
-                
-                print(url) #print log. Erase it if you don't want any log
+            try :
+                html = requests.get(url)
+            except Exception as ex:
+                print('error from the request side')
+                print(ex)
+                return None
             
-                for elem in soup.select(link_getter.link_selector.get('naver')):
-                    if(len(elem['class']) > 1) :
-                        continue
+            try :
+                soup = BeautifulSoup(html.text, 'html.parser')
+            except Exception as ex:
+                print('error from the bs side')
+                print(ex)
+                return None
+            
+            print(url) #print log. Erase it if you don't want any log
+        
+            for elem in soup.select(link_getter.link_selector.get('naver')):
+                if(len(elem['class']) > 1) :
+                    continue
 
-                    total_cnt += 1
-                    link = elem['href']
-                    dictionary = {f'{total_cnt}' : link}
-                    _json.append(dictionary)
+                total_cnt += 1
+                link = elem['href']
+                dictionary = {f'{total_cnt}' : link}
+                _json.append(dictionary)
 
-                time.sleep(0.5)
+            time.sleep(0.5)
 
             print(f"{key} ended") #print log. Erase it if you don't want any log
             
@@ -98,4 +102,5 @@ class link_getter :
 
 
 
-
+lg = link_getter()
+lg.get_link_by_naver('naver.json', True, data = ['반도체'], repeat = 1)
