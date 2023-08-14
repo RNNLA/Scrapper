@@ -5,7 +5,7 @@ import requests
 import re
 from enum import Enum
 
-class ParseType(Enum):
+class ExtractType(Enum):
     SINGLE = 1
     MULTI = 2
 
@@ -47,21 +47,20 @@ class WebCrawling:
                 raise Exception('The status code is not 200')
             soup = BeautifulSoup(response.text, 'html.parser')
             title, content, date = self._tags
-            data.append(self._extractData(soup, title, ParseType.SINGLE))
-            data.append(self._extractData(soup, content, ParseType.MULTI))
-            data.append(self._extractData(soup, date, ParseType.SINGLE))
+            data.append(self._extractData(soup, title, ExtractType.SINGLE))
+            data.append(self._extractData(soup, content, ExtractType.MULTI))
+            data.append(self._extractData(soup, date, ExtractType.SINGLE))
             return data
         except Exception as e:
             print('Error occured while getting data\n{0}'.format(e))
             return None
 
-    def _extractData(self, soup: BeautifulSoup, tag: str, parse_type: ParseType) -> str:
-        if parse_type == ParseType.SINGLE:
+    def _extractData(self, soup: BeautifulSoup, tag: str, parse_type: ExtractType) -> str | None:
+        if parse_type == ExtractType.SINGLE:
             return self._cleanText(soup.select_one(tag).text)
-        elif parse_type == ParseType.MULTI:
+        elif parse_type == ExtractType.MULTI:
             return [self._cleanText(selected_el.text) for selected_el in soup.select(tag)]
-        else:
-            return None
+        return None
 
     def _cleanText(self, text: str) -> str:
         _text = text
