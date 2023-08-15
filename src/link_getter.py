@@ -114,9 +114,3 @@ class link_getter :
         except IOError as IOex:
             print('error with opening', + str(file_name))
             print(IOex)
-
-
-
-
-lg = link_getter()
-lg.get_link('naver.json', data = ['qksehcp'])
