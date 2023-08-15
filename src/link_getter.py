@@ -8,108 +8,89 @@ from typing import List
 from typing import Optional
 
 class link_getter :
-    # all columns from the excel file. Use it if you want full columns or default value.
-    full_columns = ['주요 업체', '주요 원자재', '파운드리 기업', '반도체 기업', '기타 관련 기업', '반도체 소재 업체', '반도체 웨이퍼 업체', '반도체 장비 업체', '기구 및 협회', '반도체 공통용어', '반도체 기술 용어', '반도체 생태계 용어', '반도체 공정 용어', '반도체 소재']
     # selectors per site to get links. Choose one where you want to get links.
-    link_selector = {
-        'naver' : '#main_pack > section > div > div.group_news > ul > li > div > div > div.news_info > div.info_group > a.info',
+    site = {
+        'naver' : {
+            'url' : "https://search.naver.com/search.naver?where=news&query=",
+            'selector' : "#main_pack > section > div > div.group_news > ul > li > div > div > div.news_info > div.info_group > a.info"
+        }
     }
 
-    def __init__(self, excel_name = "risk_dictionary.xlsx", base_url = "https://search.naver.com/search.naver?where=news&query="):
+    def __init__(self, excel_name = "risk_dictionary.xlsx"):
         self.data_src = pd.read_excel(excel_name, sheet_name="1. 반도체 공급망 RISK 키워드 POOL")
-        self.base_url = base_url
+        self.total_cnt = 0
 
-    # flag = False : Use all keywords from excel files. You can designate columns, if you don't want all columns.
-    # flag = True : Use your own data set. Use it if you want one or two words instead of whole things.
-    def get_link_by_naver(self, file_name : str, flag : bool, data : List[str] = [], 
-                          repeat  : int = 1, 
-                          start_date : Optional[dt.date] = dt.date.today(),
-                          end_date : Optional[dt.date] = None):
+    def get_link_by_naver(self, 
+                          file_name : str, 
+                          data : Optional[List[str]] = None, 
+                          url : Optional[str] = None,
+                          selector : Optional[str] = None,
+                          start_date : Optional[dt.date] = None,
+                          end_date : Optional[dt.date] = None,
+                          repeat  : Optional[int] = None):
         _json = []
-        total_cnt = 0
-        try:            
-            if(repeat > 400) :
-                raise Exception('Too much repeat. Repeat is limited up to 400.')
-
-            _data = self._get_data_by_col(columns) if flag == False else data
-            if (flag == True) and (len(data) == 0):
-                raise Exception('You must enter the data, not the empty list')
-            
-        except Exception as ex:
-            print(ex)
-            return None
+        self.total_cnt = 0
+        _repeat = 400 if repeat is None else repeat if repeat <= 400 else 400
+        _data = self.data_src if data is None else data
+        _cur_date = start_date if start_date is not None else dt.date.today()
+        _end_date = end_date if dt.date(_end_date.year, _end_date.month-1, _end_date.day-1) is not None else dt.date(_cur_date.year, _cur_date.month-1, _cur_date.day-1)
+        base_url = url if url is not None else link_getter.site.get('naver').get('url')
+        _selector = selector if selector is not None else link_getter.site.get('naver').get('selector')
         
         for key in _data:
             print(f"{key} started") #print log. Erase it if you don't want any log
-            
-            cur_date = start_date
-            end_year = cur_date.year
-            end_month = cur_date.month-1
-            end_day = cur_date.day
-            end_date = dt.date(end_year, end_month, end_day)
-            print(end_date)
-            
-            while(cur_date != end_date) :
-                prev_date = cur_date - dt.timedelta(days = 1)
-                for page_num in range(repeat):
-                    url = self.base_url + key + self._add_param(page_num, '&sort=1', '&pd=3', f'&ds={cur_date.strftime("%Y.%m.%d")}', f'&de={cur_date.strftime("%Y.%m.%d")}')
-
-                    try :
-                        html = requests.get(url)
-                    except Exception as ex:
-                        print('error from the request side')
-                        print(ex)
-                        return None
-                    
-                    try :
-                        soup = BeautifulSoup(html.text, 'html.parser')
-                    except Exception as ex:
-                        print('error from the bs side')
-                        print(ex)
-                        return None
-                    
-                    print(url) #print log. Erase it if you don't want any log
-                
-                    for elem in soup.select(link_getter.link_selector.get('naver')):
-                        if(len(elem['class']) > 1) :
-                            continue
-
-                        total_cnt += 1
-                        link = elem['href']
-                        dictionary = {f'{total_cnt}' : link}
-                        _json.append(dictionary)
-
-                    time.sleep(0.5)
-                cur_date -= dt.timedelta(days = 1)
+            _json = self._get_dict(_json, base_url, key, _cur_date, _end_date, _repeat, _selector)
             print(f"{key} ended") #print log. Erase it if you don't want any log
                 
         self._to_json(file_name = file_name, json_file = _json)
-
-
-    def _get_data_by_col(self, columns : List[str]):
-        if len(columns) == 0 :
-            raise Exception('You don\'t enter any columns.')
-
-        data = []
-
-        for col in columns:
-            data += self.data_src[col].dropna(axis = 0).tolist()
-        return data
     
 
-    def _add_param(self, page_num : int, *args : str) :
+    def _get_dict(self, json, base_url, key, _cur_date, _end_date, _repeat, _selector) :
+        _json = json
+        while(_cur_date != _end_date) :
+                prev_date = _cur_date - dt.timedelta(days = 1)
+                for page_num in range(_repeat):
+                    cur_url =  self._get_url(base_url, key, page_num, '&sort=1', '&pd=3', f'&ds={_cur_date.strftime("%Y.%m.%d")}', f'&de={_cur_date.strftime("%Y.%m.%d")}')
+                    try : # Need exception handling improvement. 
+                        html = requests.get(cur_url)
+                        soup = BeautifulSoup(html.text, 'html.parser')
+                    except Exception as ex:
+                        print('error during html request & parsing')
+                        print(ex)
+                        return None
+                    print(cur_url) #print log. Erase it if you don't want any log
+
+                    _json = self._get_page_data(soup, _selector, _json)
+                    time.sleep(0.5)
+                _cur_date = prev_date
+        return _json
+    
+    def _get_page_data(self, soup, selector, json) :
+         # Need exception handling improvement : If No data in page.
+        for elem in soup.select(selector):
+                if(len(elem['class']) > 1) :
+                    continue
+                self.total_cnt += 1
+                link = elem['href']
+                dictionary = {f'{self.total_cnt}' : link}
+                json.append(dictionary)
+        return json
+
+    
+    def _get_url(self, url : str, key : str, page_num : int, *args : str) :
         params = ''
         for idx, arg in enumerate(args):
             params += arg
-        return "&start=" + str(page_num * 10 + 1) + params
+        return url + key + "&start=" + str(page_num * 10 + 1) + params
     
 
     def _to_json(self, file_name : str, json_file : List[str]) :
+         # Need exception handling improvement
         with open(file_name, 'w') as f:
             json.dump(json_file, f, ensure_ascii=False, indent=4)
-
+            
 
 
 
 lg = link_getter()
-lg.get_link_by_naver('naver.json', True, data = ['반도체'], repeat = 10)
+lg.get_link_by_naver('naver.json', ['반도체'], end_date = dt.date(2023,8,13))
