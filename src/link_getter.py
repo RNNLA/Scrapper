@@ -52,13 +52,13 @@ class link_getter :
         
         for key in _data:
             print(f"{key} started") #print log. Erase it if you don't want any log
-            self._get_dict(base_url, key, _cur_date, _end_date, _repeat, _selector)
+            self._get_dict(base_url, key, _cur_date, _end_date, _repeat, _selector, file_name)
             print(f"{key} ended") #print log. Erase it if you don't want any log
                 
         self._to_json(file_name = file_name, json_file = self._json)
     
 
-    def _get_dict(self, base_url, key, _cur_date, _end_date, _repeat, _selector) :
+    def _get_dict(self, base_url, key, _cur_date, _end_date, _repeat, _selector, file_name) :
         while(_cur_date != _end_date) :
                 prev_date = _cur_date - dt.timedelta(days = 1)
                 for page_num in range(_repeat):
@@ -66,6 +66,7 @@ class link_getter :
                     try : # Need exception handling improvement. 
                         html = requests.get(cur_url)
                         soup = BeautifulSoup(html.text, 'html.parser')
+                        print(cur_url) #print log. Erase it if you don't want any log
                         self._get_page_data(soup, _selector)
                     except HTTPError as hp:
                         print('wrong http file')
@@ -82,9 +83,8 @@ class link_getter :
                         print('error during html request & parsing')
                         print(ex)
                         return None
-                    print(cur_url) #print log. Erase it if you don't want any log
-
                     time.sleep(0.5)
+                self._to_json(file_name, self._json)
                 _cur_date = prev_date
     
     def _get_page_data(self, soup, selector) :
