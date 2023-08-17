@@ -8,6 +8,9 @@ from typing import List
 from typing import Optional
 from urllib.error import HTTPError
 from urllib.error import URLError
+import random
+from random_user_agent.user_agent import UserAgent
+from random_user_agent.params import SoftwareName, OperatingSystem
 
 class NoDataException(Exception):
     def __init__(self, msg):
@@ -25,14 +28,17 @@ class link_getter :
         }
     }
 
-    def __init__(self, excel_name = "risk_dictionary.xlsx"):
-        self.data_src = pd.read_excel(excel_name, sheet_name="1. 반도체 공급망 RISK 키워드 POOL")
+    def __init__(self, excel_name = "word_list.csv"):
+        self.data_src = pd.read_csv(excel_name)['word'].tolist()
         self._json = []
         self.total_cnt = 0
 
     #If you meet an error while crawling, you can get json.
     def get_json(self) :
         return self._json
+    
+    def set_json_empty(self):
+        self._json = []
 
     def get_link(self, file_name : str, 
                         data : Optional[List[str]] = None, 
@@ -41,12 +47,11 @@ class link_getter :
                         start_date : Optional[dt.date] = None,
                         end_date : Optional[dt.date] = None,
                         repeat  : Optional[int] = None):
-        self._json = []
         self.total_cnt = 0
         _repeat = 400 if repeat is None else repeat if repeat <= 400 else 400
         _data = self.data_src if data is None else data
         _cur_date = start_date if start_date is not None else dt.date.today()
-        _end_date = dt.date(_cur_date.year, _cur_date.month-1, _cur_date.day-1) if end_date is None else dt.date(end_date.year, end_date.month-1, end_date.day-1)
+        _end_date = dt.date(_cur_date.year, _cur_date.month-1, _cur_date.day-1) if end_date is None else dt.date(end_date.year, end_date.month, end_date.day)
         base_url = url if url is not None else link_getter.site.get('naver').get('url')
         _selector = selector if selector is not None else link_getter.site.get('naver').get('selector')
         
@@ -64,7 +69,15 @@ class link_getter :
                 for page_num in range(_repeat):
                     cur_url =  self._get_url(base_url, key, page_num, '&sort=1', '&pd=3', f'&ds={_cur_date.strftime("%Y.%m.%d")}', f'&de={_cur_date.strftime("%Y.%m.%d")}')
                     try : # Need exception handling improvement. 
-                        html = requests.get(cur_url)
+                        software_names = [SoftwareName.CHROME.value]
+                        operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value]   
+
+                        user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=100)
+
+                        # Get Random User Agent String.
+                        user_agent = user_agent_rotator.get_random_user_agent()
+                        
+                        html = requests.get(cur_url, headers = {'User-Agent' : user_agent})
                         soup = BeautifulSoup(html.text, 'html.parser')
                         print(cur_url) #print log. Erase it if you don't want any log
                         self._get_page_data(soup, _selector)
@@ -114,3 +127,6 @@ class link_getter :
         except IOError as IOex:
             print('error with opening', + str(file_name))
             print(IOex)
+
+lg = link_getter()
+lg.get_link('hmm.json')
