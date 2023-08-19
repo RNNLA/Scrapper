@@ -23,17 +23,12 @@ class NoDataException(Exception):
     def __str__(self):
         return self.msg
     
-class TorHandler:
+class URLHandler:
     def __init__(self):
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'}
 
     def open_url(self, url : str):
-        def _set_url_proxy():
-            proxy_support = ProxyHandler({'http': '127.0.0.1:8118'})
-            opener = build_opener(proxy_support)
-            install_opener(opener)
-
         def _get_user_agent() :
             software_names = [SoftwareName.CHROME.value]
             operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value, OperatingSystem.MAC_OS_X.value, OperatingSystem.MAC.value, OperatingSystem.UNIX.value]   
@@ -42,30 +37,10 @@ class TorHandler:
             user_agent = user_agent_rotator.get_random_user_agent()
             self.headers['User-Agent'] = user_agent
 
-        _set_url_proxy()
         _get_user_agent()
         request = Request(url, None, self.headers)
         return urlopen(request).read().decode('utf-8')
     
-    def get_cur_ip(self) :
-        return self.open_url('http://icanhazip.com/')
-    
-    def get_new_ip(self, wait_time : int) -> str:
-        ip = self.get_cur_ip()
-        old_ip = ip
-        self.renew_connection()
-        while ip == old_ip:
-            time.sleep(wait_time)
-            ip = self.get_cur_ip() 
-        return ip.strip()
-    
-    @staticmethod
-    def renew_connection():
-        with Controller.from_port(port=9051) as controller:
-            controller.authenticate(password='btt')
-            controller.signal(Signal.NEWNYM)
-            controller.close()
-
 class link_getter :
     # selectors per site to get links. Choose one where you want to get links.
     site = {
@@ -81,7 +56,7 @@ class link_getter :
         self.output_data = []
         self.output_data_content = []
         self.total_cnt = 0
-        self.tor_handler = TorHandler()
+        self.url_handler = URLHandler()
 
     #If you meet an error while crawling, you can get json.
     def get_json(self) :
@@ -117,7 +92,6 @@ class link_getter :
 
         for key in _input_data:
             print(f"{key} started") #print log. Erase it if you don't want any log
-            self.tor_handler.get_new_ip(2)
             self._trip_per_date(key, _base_url, _start_date, _end_date, _toal_page_num, _selector, file_name)
             print(f"{key} ended") #print log. Erase it if you don't want any log
          
@@ -126,8 +100,6 @@ class link_getter :
 
     def _trip_per_date(self, key, _base_url, _start_date, _end_date, _toal_page_num, _selector, file_name) :
         cur_date = _start_date
-        date_cnt = 0
-        page_cnt = 0
         while(cur_date != _end_date) :
                 prev_date = cur_date - dt.timedelta(days = 1)
                 date_cnt += 1
@@ -139,36 +111,31 @@ class link_getter :
                                                     '&sort=1', '&pd=3', 
                                                     f'&ds={cur_date.strftime("%Y.%m.%d")}', 
                                                     f'&de={cur_date.strftime("%Y.%m.%d")}') 
-                        html = self.tor_handler.open_url(url)
+                        html = self.url_handler.open_url(url)
                         soup = BeautifulSoup(html, 'html.parser')
-                        print(f'Your current ip : {self.tor_handler.get_cur_ip().strip()}')
                         print(url) #print log. Erase it if you don't want any log
 
-                        if date_cnt >= random.randrange(5, 8) or page_cnt >= random.randrange(10, 16) :
-                            print("Random IP change")
-                            print(f'Your new ip : {self.tor_handler.get_new_ip(2)}')
-                            
-                            date_cnt = 0
-                            page_cnt = 0
-                
                         self._put_link_from_page_to_list(soup.select(_selector))
                         
                     except HTTPError as hp:
                         print(hp)
                         if hp.__str__() == 'HTTP Error 403: Forbidden' :
-                            while True :
+                            trial = 0
+                            while trial <= 3 :
                                 try : 
                                     print("You're currently blocked")
-                                    print(f'Your new ip : {self.tor_handler.get_new_ip(2)}')
                                     print(f'In error, your url : {url}')
-                                    time.sleep(random.randrange(250,551) / 98 * 0.45 + random.randrange(280,521) / 102 * 0.55)
-                                    html = self.tor_handler.open_url(url)
+                                    time.sleep(random.randrange(1545,4455) / 97 * 0.45 + random.randrange(1467,4533) / 103 * 0.55)
+
+                                    html = self.url_handler.open_url(url)
                                     soup = BeautifulSoup(html, 'html.parser')
+
                                     self._put_link_from_page_to_list(soup.select(_selector))
                                     break
                                 except Exception as e:
                                     print(f'error during blocked status : {e}')
                                     if e.__str__() == 'HTTP Error 403: Forbidden' :
+                                        trial += 1
                                         print('Still blocked')
                                         continue
                                     else :
@@ -225,10 +192,6 @@ class link_getter :
     def _to_json(self, file_name : str, json_file : List[str]) :
         with open(file_name, 'w') as f:
             json.dump(json_file, f, ensure_ascii=False, indent=4)
-
-
-    
-
 
 lg = link_getter()
 lg.link_to_json('data_crawling.json', True, start_keyword = '버슘머트리얼즈에스피씨코리아(유한)')
