@@ -14,7 +14,7 @@ class Web():
   def __init__(self):
     self._header = HEADER
 
-  def get_request(self, url : str):
+  def get_request(self, url : str) -> (int, BeautifulSoup):
     soup = None
     tries = 0
     while tries < 3:

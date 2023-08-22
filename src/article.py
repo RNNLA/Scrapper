@@ -7,7 +7,7 @@ class Article(Web):
     super().__init__()
     self._regex_formats = (r'[\\\t\\\r\\\n]',)
 
-  def __get_cleaned_data__(self, data: List[str]):
+  def __get_cleaned_data__(self, data: List[str]) -> List[str]:
     return [self.__clean_text__(line.text) for line in data]
 
   def __clean_text__(self, text: str) -> str:
@@ -16,7 +16,7 @@ class Article(Web):
       copied_text = re.sub(regex, '', copied_text)
     return copied_text
 
-  def get_text_url(self, url: str, tags: List[str]):
+  def get_text_url(self, url: str, tags: List[str]) -> List[str] | None:
     data = []
     try:
       if len(tags) != 3:

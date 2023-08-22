@@ -1,4 +1,4 @@
-from constants import NAVER_URL, NAVER_SELECTOR, DATA_PATH
+from constants import URL, SELECTOR, DATA_PATH
 from web import Web, MaxRetry
 from urllib.parse import quote
 from typing import List
@@ -13,20 +13,20 @@ class NoDataException(Exception):
   def __str__(self):
     return self.msg
 
-def string_to_date(date: str, date_format: str):
+def string_to_date(date: str, date_format: str) -> None:
   return parse(date).strftime(date_format)
 
-def write_to_csv(data: List[str], keyword: str, date: str):
+def write_to_csv(data: List[str], keyword: str, date: str) -> None:
   date = string_to_date(date, '%Y-%m-%d')
   data_frame = pd.DataFrame(data, columns = ['links'])
   file = f'{DATA_PATH}{date}_{keyword}.csv'
   data_frame.to_csv(file, sep = ',', index = False)
 
-class Naver(Web):
+class Scrapper(Web):
   def __init__(self):
     super().__init__()
-    self._url = NAVER_URL
-    self._selector = NAVER_SELECTOR
+    self._url = URL
+    self._selector = SELECTOR
     self._date = None
     self._keyword = None
     self.page_max = 400
@@ -50,7 +50,7 @@ class Naver(Web):
     if status_code == 200:
       return self.__get_link_from_page__(soup.select(self._selector))
 
-  def get_data_day(self, keyword: str, date: str):
+  def get_data_day(self, keyword: str, date: str) -> None:
     links = []
     self._date = date
     self._keyword = keyword
@@ -69,7 +69,7 @@ class Naver(Web):
       print(ne)
     write_to_csv(links, self._keyword, self._date)
 
-  def get_data(self, keyword: str, start_date: str, days: int):
+  def get_data(self, keyword: str, start_date: str, days: int) -> None:
     start = parse(start_date)
     date_list = [start - dt.timedelta(days=x) for x in range(days)]
     for date in date_list:
