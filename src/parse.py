@@ -1,5 +1,3 @@
-"""Module parse.py"""
-
 from typing import List
 from bs4 import BeautifulSoup
 import requests
@@ -11,38 +9,6 @@ class ExtractType(Enum):
   MULTI = 2
 
 class WebCrawling:
-  """
-  WebCrawling, For extracting specific data from given URLs.
-
-  Attributes:
-  ----------
-  _urls : List[str]
-    A list of URLs to be crawled.
-  _tags : List[str]
-    The tags which will be used to extract data from the URLs.
-    This list should always be of length 3: [title_tag, content_tag, date_tag]
-  _header : dict
-    Headers for making HTTP requests.
-  _data : List
-    A list where the extracted data will be stored.
-  regex_formats : Tuple
-    Regular expressions used to clean the extracted data.
-
-  Methods:
-  -------
-  run():
-    Initiates the web crawling process and returns the extracted data.
-  _run_each():
-    Extracts data from each provided URL and appends it to the _data attribute.
-  _get_data(url: str) -> List | None:
-    Fetches and extracts the required data from a single URL.
-  _extract_data(soup: BeautifulSoup, 
-                tag: str, 
-                parse_type: ExtractType) -> str | None:
-    Extracts data from BeautifulSoup using given tag and type.
-  _clean_text(text: str) -> str:
-    Cleans the extracted text using regular expressions from regex_formats.
-  """
   def __init__(self, urls: List[str], tags: List[str]):
     self._regex_formats = (r'[\\\t\\\r\\\n]',)
     self._urls = urls
