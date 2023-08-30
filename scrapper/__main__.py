@@ -1,6 +1,6 @@
-import scrapper as sc
-import article as art
-from constants import DATA_PATH, TAGS
+import scrapper.scrapper as sc
+import scrapper.article as art
+from .constants import DATA_PATH, TAGS
 import pandas as pd
 import os
 import sys
@@ -46,6 +46,6 @@ def parsing_contents_from_article_url():
         for link in links:
             _Article.get_text_url(link, TAGS)
 
-open_and_scrap_articles()
-
-parsing_contents_from_article_url()
+if __name__ == '__main__':
+    open_and_scrap_articles()
+    parsing_contents_from_article_url()

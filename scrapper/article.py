@@ -1,5 +1,6 @@
 from typing import List
-from web import Web, MaxRetry
+from .web import Web
+from .exceptions import MaxRetry
 import re
 
 class Article(Web):

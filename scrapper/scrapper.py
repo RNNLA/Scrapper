@@ -1,17 +1,11 @@
-from constants import URL, SELECTOR, DATA_PATH
-from web import Web, MaxRetry
+from .constants import URL, SELECTOR, DATA_PATH
+from .web import Web
+from .exceptions import MaxRetry, NoDataException
 from urllib.parse import quote
 from typing import List
 from dateutil.parser import parse
 import datetime as dt
 import pandas as pd
-
-class NoDataException(Exception):
-  def __init__(self, msg):
-    self.msg = msg
-
-  def __str__(self):
-    return self.msg
 
 def string_to_date(date: str, date_format: str) -> None:
   return parse(date).strftime(date_format)
