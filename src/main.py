@@ -3,12 +3,19 @@ import article as art
 from constants import DATA_PATH, TAGS
 import pandas as pd
 import os
+import sys
 from datetime import datetime
 
 def open_and_scrap_articles():
-    f = pd.read_csv('../word_list.csv')
+    try:
+        if len(sys.argv) != 2:
+            raise ValueError('Not enough arguments from command line. plz add word list csv file')
+        file_path = sys.argv[1]
+    except ValueError as ve:
+        print(ve)
+        sys.exit()
+    f = pd.read_csv('./' + file_path)
     words = f['word'].tolist()
-
     _Scrapper = sc.Scrapper()
     for word in words:
         _Scrapper.get_data(word, datetime.today().strftime("%Y-%m-%d"), 28)
